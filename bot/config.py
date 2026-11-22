@@ -54,10 +54,13 @@ class Config:
         return f"{self.post_hour:02d}:{self.post_minute:02d}"
 
 
+_INLINE_COMMENT_RE = re.compile(r"\s+#.*$")
+
+
 def _clean_value(raw: str | None) -> str:
     if raw is None:
         return ""
-    return raw.strip()
+    return _INLINE_COMMENT_RE.sub("", raw).strip()
 
 
 def _parse_int(
