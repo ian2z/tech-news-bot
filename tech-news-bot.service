@@ -1,0 +1,16 @@
+[Unit]
+Description=Tech News Discord Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=SEU_USUARIO
+WorkingDirectory=/home/SEU_USUARIO/tech-news-bot
+ExecStart=/home/SEU_USUARIO/tech-news-bot/venv/bin/python -m bot.main
+Restart=always
+RestartSec=10
+EnvironmentFile=/home/SEU_USUARIO/tech-news-bot/.env
+
+[Install]
+WantedBy=multi-user.target
